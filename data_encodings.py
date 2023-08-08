@@ -1,6 +1,59 @@
 import numpy as np
 import pandas as pd
 
+class DataInterface:
+    def encode(self):
+        pass
+
+
+class Age(DataInterface):
+    def __init__(self,df, ref_col):
+        self.df = df
+        self.ref_col = ref_col
+    
+    def encode(self):
+        """
+        
+        """
+        # initialize df with 0s-80s for age
+        age_labels = ["a0", "a10", "a20", "a30", "a40", "a50", "a60", "a70", "a80"]
+        # Define the age category ranges and corresponding labels
+        age_ranges = [0, 10, 20, 30, 40, 50, 60, 70, 80,90]
+
+        # Use pd.cut to assign age categories based on the specified ranges and labels
+        age_category = pd.cut(self.df[self.ref_col], bins=age_ranges, labels=age_labels, right=False)
+        for each in age_labels:
+            self.df[each] = np.where(age_category == each, 1, 0)
+        
+        return self.df
+
+class SmokingStatus(DataInterface):
+    def __init__(self,df, ref_col):
+        self.df = df
+        self.ref_col = ref_col
+    
+    def encode(self):
+    
+        cats = ["ss_1", "ss_2","ss_3", "ss_4"]
+        vals = self.df["smoking_status"].unique()
+        col_dict = {key:val for key,val in zip(cats,vals)}
+
+        for each in col_dict.keys():
+            self.df[each] = np.where(self.df[self.ref_col] == col_dict.get(each), 1, 0)
+        return self.df
+
+#for gender marriage and residence - try to subclass (since they all behave the same)
+
+class SimpleConvert(DataInterface):
+
+    def __init__(self, radius):
+        # super().__init__(radius)
+        def keyword():
+        pass
+
+class Marriage(SimpleConvert):
+
+
 def get_bmi_bucket(bmi_table, data_table):
 # def calculate_Z(bmi_table, data_table):
     """
