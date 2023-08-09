@@ -106,11 +106,11 @@ class ChildBMIEncoder(EncoderInterface):
             bmi = row['bmi']
             
             # convert ages below 21 to age in months
-            if age < 21:
-                age_in_months = age * 12
-                age = age_in_months + 0.5 if age_in_months not in [24,240] else age_in_months
             
-
+            age_in_months = age * 12
+            # age = age_in_months + 0.5 if age_in_months not in [24,240] else age_in_months
+            age = age_in_months + 0.5
+            
             # Get the relevant row from the bmi_table
             lookup_row = self._get_row(gender, age)
 
@@ -156,14 +156,8 @@ class ChildBMIEncoder(EncoderInterface):
 class AdultBMIEncoder(EncoderInterface):
     """ 
     Input:
-        weight_unit: lbs or kg
-        height_unit: (ft, in) or m
         bmi_table: df reference table
         data_table: df table with BMI to be converted
-        age: float or int
-        height: (int,int) or int
-        weight: float or int
-        "gender": "Male" or "Female"
     Output:
         df with encoded BMI categories
     
@@ -182,8 +176,9 @@ class AdultBMIEncoder(EncoderInterface):
         bmi_buckets = []
 
         # Iterate through each row in the data_table
-        for _, row in self.data_table.iterrows():
+        for _ , row in self.data_table.iterrows():
             bmi = row['bmi']
+            age = row["age"]
             
             bucket = self._bucket_adult_bmi(bmi)
 
