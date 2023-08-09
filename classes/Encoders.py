@@ -183,7 +183,7 @@ class AdultBMIEncoder(EncoderInterface):
             bmi_buckets.append(bucket)
 
         # # Add Z_values to the data_table and return as a new dataframe
-        # self.data_table['bmi_buckets'] = bmi_buckets
+        self.data_table['bmi_buckets'] = bmi_buckets
         return self.data_table
 
     def _bucket_adult_bmi(self, bmi):
