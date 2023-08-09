@@ -88,7 +88,7 @@ class ChildBMIEncoder(EncoderInterface):
         df with encoded BMI categories
     
     """
-    def __init__(self,bmi_table, data_table):
+    def __init__(self, bmi_table, data_table):
         self.bmi_table = bmi_table
         self.data_table = data_table
 
@@ -122,7 +122,7 @@ class ChildBMIEncoder(EncoderInterface):
         self.data_table['bmi_buckets'] = bmi_buckets
         return self.data_table
 
-    def _bucket_child_bmi(bmi, lookup_row):
+    def _bucket_child_bmi(self, bmi, lookup_row):
 
         c_under = bmi < lookup_row["P5"].item()
         c_healthy = lookup_row["P5"].item() <= bmi < lookup_row["P85"].item()
@@ -146,10 +146,13 @@ class ChildBMIEncoder(EncoderInterface):
             Output: 
                 Single row df.
             """
-            age_mask = self.bmi_table["Agemos"] == age
-            gender_mask = self.bmi_table["Sex"] == gender
+            try:
+                age_mask = self.bmi_table["Agemos"] == age
+                gender_mask = self.bmi_table["Sex"] == gender
+                lookup_row = self.bmi_table[age_mask & gender_mask]
+            except:
+                print("bmi_table dtypes should be int() or float()")
             
-            lookup_row = self.bmi_table[age_mask & gender_mask]
             
             return lookup_row
 
@@ -162,15 +165,11 @@ class AdultBMIEncoder(EncoderInterface):
         df with encoded BMI categories
     
     """
-    def __init__(self,bmi_table, data_table, bmi):
-        self.bmi_table = bmi_table
+    def __init__(self, data_table):
         self.data_table = data_table
-        self.bmi = bmi
     
     
     def encode(self):
-        # Define a function to calculate Z
-        
 
         # Create an empty list to store Z values
         bmi_buckets = []
@@ -178,17 +177,16 @@ class AdultBMIEncoder(EncoderInterface):
         # Iterate through each row in the data_table
         for _ , row in self.data_table.iterrows():
             bmi = row['bmi']
-            age = row["age"]
             
             bucket = self._bucket_adult_bmi(bmi)
 
             bmi_buckets.append(bucket)
 
-        # Add Z_values to the data_table and return as a new dataframe
-        self.data_table['bmi_buckets'] = bmi_buckets
+        # # Add Z_values to the data_table and return as a new dataframe
+        # self.data_table['bmi_buckets'] = bmi_buckets
         return self.data_table
 
-    def _bucket_adult_bmi(bmi):
+    def _bucket_adult_bmi(self, bmi):
 
             if bmi < 18.5:
                 bmi_bucket = "under weight"
