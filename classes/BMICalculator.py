@@ -1,6 +1,7 @@
 #make a interface with .calcuate
 #make 2 concrete classes
 # format text input --> private method
+from Formatter import Formatter as fm
 
 class BMICalculatorInterface:
     def __init__(self, weight_lb =  None, height_ft_in =  None, weight_kg =  None, height_m =  None, age = None):
@@ -27,32 +28,17 @@ class StandardBMICalculator(BMICalculatorInterface):
             float(BMI)
         """
         if type(self.height_ft_in) == str:
-            height_ft_in = self._format_standard_height(height_ft_in)
+            self.height_ft_in = fm.StandardMeasurementTextFormatter(self.height_ft_in).format()
+        
+        if type(self.weight_lb) == str:
+            self.weight_lb = fm.Text2FloatFormatter(self.weight_lb).format()
         
         height = (self.height_ft_in[0] * 12) + self.height_ft_in[1]
-        bmi = self.weight_lb / (height **2)
+        bmi = float(self.weight_lb) / (height **2)
 
         return bmi
     
-    def _format_standard_height(standard_height):
-        """ 
-        Format text input.
-
-        Input:
-            "feet,inches" ; ex: "5,2"
-        Output:
-            (int(feet), int(inches)); ex: (5, 2)
-        """
-
-        height = standard_height.split(",")
-        
-        try: 
-            height_tup = (float(height[0]), float(height[1]))
-        except:
-            print("Input must contain only numbers separated by \",\". Ex: \"5,2\" for 5 feet, 2 inches")
-
-        return height_tup
-
+   
     class ImperialBMICalculator(BMICalculatorInterface):
         def __init__(self, weight_kg, height_m) -> None:
             super().__init__(weight_kg, height_m)
@@ -68,6 +54,13 @@ class StandardBMICalculator(BMICalculatorInterface):
             Output:
                 float(BMI)
             """
-            bmi = self.weight_kg / (self.height_m **2)
+
+            if type(self.weight_kg) == str:
+                self.weight_kg = fm.Text2FloatFormatter(self.weight_kg).format()
+
+            if type(self.height_m) == str:
+                self.height_m = fm.Text2FloatFormatter(self.height_m).format()
+
+            bmi = (self.weight_kg) / (self.height_m **2)
 
             return bmi
