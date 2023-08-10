@@ -26,7 +26,7 @@ class StandardBMICalculator(BMICalculatorInterface):
         Output:
             float(BMI)
         """
-        if type(self.fheight_ft_in) == str:
+        if type(self.height_ft_in) == str:
             height_ft_in = self._format_standard_height(height_ft_in)
         
         height = (self.height_ft_in[0] * 12) + self.height_ft_in[1]
