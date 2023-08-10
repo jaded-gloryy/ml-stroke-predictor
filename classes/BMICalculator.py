@@ -53,7 +53,7 @@ class StandardBMICalculator(BMICalculatorInterface):
 
         return height_tup
 
-    class StandardBMICalculator(BMICalculatorInterface):
+    class ImperialBMICalculator(BMICalculatorInterface):
         def __init__(self, weight_kg, height_m) -> None:
             super().__init__(weight_kg, height_m)
         
