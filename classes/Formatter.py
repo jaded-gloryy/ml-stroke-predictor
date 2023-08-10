@@ -9,7 +9,7 @@ class StandardMeasurementTextFormatter(Formatter):
     def __init__(self, text):
         super().__init__(text)
 
-    def format(self, text):
+    def format(self):
         """ 
         Format standard height measurement text input.
 
@@ -19,7 +19,7 @@ class StandardMeasurementTextFormatter(Formatter):
             (int(feet), int(inches)); ex: (5, 2)
         """
 
-        height = text.split(",")
+        height = self.text.split(",")
         
         try: 
             height_tup = (float(height[0]), float(height[1]))
@@ -32,7 +32,7 @@ class Text2FloatFormatter(Formatter):
     def __init__(self, text):
         super().__init__(text)
 
-    def format(self, text):
+    def format(self):
         """ 
         Convert any text number to a float.
 
@@ -43,7 +43,7 @@ class Text2FloatFormatter(Formatter):
         """
 
         try: 
-            f_text = float(text)
+            f_text = float(self.text)
         except:
             print("Input must contain only numbers")  
         
