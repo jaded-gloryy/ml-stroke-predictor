@@ -1,7 +1,7 @@
 #make a interface with .calcuate
 #make 2 concrete classes
 # format text input --> private method
-from Formatter import Formatter as fm
+import classes.Formatter as fm
 
 class BMICalculatorInterface:
     def __init__(self, weight_lb =  None, height_ft_in =  None, weight_kg =  None, height_m =  None, age = None):
