@@ -5,7 +5,7 @@ class Formatter:
     def format():
         pass
 
-class StandardMeasurementTextFormatter(Formatter):
+class ImperialMeasurementTextFormatter(Formatter):
     def __init__(self, text):
         super().__init__(text)
 

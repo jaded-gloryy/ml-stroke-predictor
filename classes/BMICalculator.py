@@ -13,7 +13,7 @@ class BMICalculatorInterface:
     def calculate(self):
         pass
 
-class StandardBMICalculator(BMICalculatorInterface):
+class ImperialBMICalculator(BMICalculatorInterface):
     def __init__(self, weight_lb, height_ft_in) -> None:
         super().__init__(weight_lb, height_ft_in)
 
@@ -28,7 +28,7 @@ class StandardBMICalculator(BMICalculatorInterface):
             float(BMI)
         """
         if type(self.height_ft_in) == str:
-            self.height_ft_in = fm.StandardMeasurementTextFormatter(self.height_ft_in).format()
+            self.height_ft_in = fm.ImperialMeasurementTextFormatter(self.height_ft_in).format()
         
         if type(self.weight_lb) == str:
             self.weight_lb = fm.Text2FloatFormatter(self.weight_lb).format()
@@ -39,7 +39,7 @@ class StandardBMICalculator(BMICalculatorInterface):
         return bmi
     
    
-class ImperialBMICalculator(BMICalculatorInterface):
+class MetricBMICalculator(BMICalculatorInterface):
     def __init__(self, weight_kg, height_m) -> None:
         super().__init__(weight_kg, height_m)
     
