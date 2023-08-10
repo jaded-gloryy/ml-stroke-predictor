@@ -34,7 +34,7 @@ class StandardBMICalculator(BMICalculatorInterface):
             self.weight_lb = fm.Text2FloatFormatter(self.weight_lb).format()
         
         height = (self.height_ft_in[0] * 12) + self.height_ft_in[1]
-        bmi = float(self.weight_lb) / (height **2)
+        bmi = (float(self.weight_lb) / (height **2)) * 703
 
         return bmi
     
