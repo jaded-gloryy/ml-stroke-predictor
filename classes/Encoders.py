@@ -61,7 +61,7 @@ class GenderEncoder(EncoderInterface):
         super().__init__(df, ref_col)
     
     def encode(self):
-        self.df["is_male"] = np.where(self.df[self.ref_co] == "Male", 1, 0)
+        self.df["is_male"] = np.where(self.df[self.ref_col] == "Male", 1, 0)
         return self.df
     
 class ResidenceEncoder(EncoderInterface):
@@ -69,7 +69,7 @@ class ResidenceEncoder(EncoderInterface):
         super().__init__(df, ref_col)
     
     def encode(self):
-        self.df["live_urban"] = np.where(self.df[self.ref_co] == "Urban", 1, 0)
+        self.df["live_urban"] = np.where(self.df[self.ref_col] == "Urban", 1, 0)
         return self.df
 
 
