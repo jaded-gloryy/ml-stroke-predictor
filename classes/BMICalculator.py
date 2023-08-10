@@ -39,28 +39,28 @@ class StandardBMICalculator(BMICalculatorInterface):
         return bmi
     
    
-    class ImperialBMICalculator(BMICalculatorInterface):
-        def __init__(self, weight_kg, height_m) -> None:
-            super().__init__(weight_kg, height_m)
+class ImperialBMICalculator(BMICalculatorInterface):
+    def __init__(self, weight_kg, height_m) -> None:
+        super().__init__(weight_kg, height_m)
+    
+    def calculate(self):
+        """ 
+        Calculate BMI from imperial measurements.
+
+        Inputs:
+            float(weight_kg)
+            float(height_m)
         
-        def calculate(self):
-            """ 
-            Calculate BMI from imperial measurements.
+        Output:
+            float(BMI)
+        """
 
-            Inputs:
-                float(weight_kg)
-                float(height_m)
-            
-            Output:
-                float(BMI)
-            """
+        if type(self.weight_kg) == str:
+            self.weight_kg = fm.Text2FloatFormatter(self.weight_kg).format()
 
-            if type(self.weight_kg) == str:
-                self.weight_kg = fm.Text2FloatFormatter(self.weight_kg).format()
+        if type(self.height_m) == str:
+            self.height_m = fm.Text2FloatFormatter(self.height_m).format()
 
-            if type(self.height_m) == str:
-                self.height_m = fm.Text2FloatFormatter(self.height_m).format()
+        bmi = (self.weight_kg) / (self.height_m **2)
 
-            bmi = (self.weight_kg) / (self.height_m **2)
-
-            return bmi
+        return bmi
