@@ -4,9 +4,9 @@
 import classes.Formatter as fm
 
 class BMICalculatorInterface:
-    def __init__(self, weight_lb =  None, height_ft_in =  None, weight_kg =  None, height_m =  None, age = None):
+    def __init__(self, weight_lb =  None, height_in =  None, weight_kg =  None, height_m =  None):
         self.weight_lb = weight_lb
-        self.height_ft_in = height_ft_in
+        self.height_in = height_in
         self.weight_kg = weight_kg
         self.height_m = height_m
     
@@ -14,26 +14,26 @@ class BMICalculatorInterface:
         pass
 
 class ImperialBMICalculator(BMICalculatorInterface):
-    def __init__(self, weight_lb, height_ft_in) -> None:
-        super().__init__(weight_lb, height_ft_in)
+    def __init__(self, weight_lb, height_in) -> None:
+        super().__init__(weight_lb, height_in)
 
     def calculate(self):
         """ 
         Calculate BMI using standard measurments.
         Inputs:
-            height_ft_in = (height feet, height in)
+            height_in = int() or float()
             weight_lb = int() or float()
         
         Output:
             float(BMI)
         """
-        if type(self.height_ft_in) == str:
-            self.height_ft_in = fm.ImperialMeasurementTextFormatter(self.height_ft_in).format()
+        if type(self.height_in) == str:
+            self.height_in = fm.Text2FloatFormatter(self.height_in).format()
         
         if type(self.weight_lb) == str:
             self.weight_lb = fm.Text2FloatFormatter(self.weight_lb).format()
         
-        height = (self.height_ft_in[0] * 12) + self.height_ft_in[1]
+        height =  self.height_in
         bmi = (float(self.weight_lb) / (height **2)) * 703
 
         return bmi
@@ -41,7 +41,7 @@ class ImperialBMICalculator(BMICalculatorInterface):
    
 class MetricBMICalculator(BMICalculatorInterface):
     def __init__(self, weight_kg, height_m) -> None:
-        super().__init__(weight_kg, height_m)
+        super().__init__(weight_kg = weight_kg, height_m = height_m)
     
     def calculate(self):
         """ 
