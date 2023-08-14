@@ -38,12 +38,13 @@ class SmokingStatusEncoder(EncoderInterface):
     def encode(self):
     
         cats = ["ss_1", "ss_2","ss_3", "ss_4"]
-        vals = self.df["smoking_status"].unique()
+        vals = ["smokes","never smoked", "formerly smoked", "Unknown"]
         col_dict = {key:val for key,val in zip(cats,vals)}
 
         for each in col_dict.keys():
             self.df[each] = np.where(self.df[self.ref_col] == col_dict.get(each), 1, 0)
         return self.df
+
 
 #for gender marriage and residence - try to subclass (since they all behave the same)
 
@@ -55,7 +56,22 @@ class MarriageEncoder(EncoderInterface):
     def encode(self):
         self.df["c_ever_married"] = np.where(self.df[self.ref_col] == "Yes", 1, 0)
         return self.df
-    
+
+class HypertensionEncoder(EncoderInterface):
+    def __init__(self, df, ref_col) -> None:
+        super().__init__(df, ref_col)
+
+    def encode(self):
+        self.df["hypertension"] = np.where(self.df[self.ref_col] == "Yes", 1, 0)
+        return self.df
+
+class HeartDiseaseEncoder(EncoderInterface):
+    def __init__(self, df, ref_col) -> None:
+        super().__init__(df, ref_col)
+
+    def encode(self):
+        self.df["heart_disease"] = np.where(self.df[self.ref_col] == "Yes", 1, 0)
+
 class GenderEncoder(EncoderInterface):
     def __init__(self, df, ref_col) -> None:
         super().__init__(df, ref_col)
@@ -199,7 +215,14 @@ class AdultBMIEncoder(EncoderInterface):
 
             return bmi_bucket
 
+def one_hot_enc_bmi(df,ref_col):
 
+    cats = ["bmi_under", "bmi_healthy", "bmi_over", "bmi_obese"]
+    vals = ["under weight", "healthy weight", "over weight", "obese"]
+    col_dict = {key:val for key,val in zip(cats,vals)}
+
+    for each in col_dict.keys():
+        df[each] = np.where(df[ref_col] == col_dict.get(each), 1, 0)
 
 
 
@@ -302,14 +325,7 @@ class AdultBMIEncoder(EncoderInterface):
 #     for each in age_labels:
 #         df[each] = np.where(age_category == each, 1, 0)
 
-# def encode_bmi(df,ref_col):
 
-#     cats = ["bmi_under", "bmi_healthy", "bmi_over", "bmi_obese"]
-#     vals = ["under weight", "healthy weight", "over weight", "obese"]
-#     col_dict = {key:val for key,val in zip(cats,vals)}
-
-#     for each in col_dict.keys():
-#         df[each] = np.where(df[ref_col] == col_dict.get(each), 1, 0)
 
 # def encode_gender(df):
 #     df["is_male"] = np.where(df["gender"] == "Male", 1, 0)
