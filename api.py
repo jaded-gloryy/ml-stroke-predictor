@@ -101,7 +101,7 @@ def validate_input(data):
 
 def encode_pred(df, final_cols):
 
-    if all(df["age"] > 20):
+    if all(df["age"] > 19):
         bmi = enc.AdultBMIEncoder(df).encode()
     else:
         bmi = enc.ChildBMIEncoder(bmi_table= child_bmi_data, data_table= df).encode()
