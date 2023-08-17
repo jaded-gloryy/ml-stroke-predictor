@@ -34,4 +34,4 @@ Finally, a prediction is made of whether the entered data is likely to result in
 
 ## Demo
 
-Insert gif or link to demo
+![](data/stroke_pred_demo.gif)
