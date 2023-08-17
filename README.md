@@ -1,6 +1,4 @@
-```
-yaml
-
+---
 title: ML Stroke Predictor
 emoji: 🧪
 colorFrom: pink
@@ -10,7 +8,8 @@ sdk_version: 3.39.0
 python_version: 3.10.2
 app_file: demo.ipynb
 pinned: true
-```
+---
+
 # ML Stroke Predictor
 
 This predictor (SVM model) was trained on [health data](https://www.kaggle.com/fedesoriano/stroke-prediction-dataset) pertaining to [strokes](https://www.cdc.gov/stroke/about.htm#:~:text=A%20stroke%2C%20sometimes%20called%20a,brain%20become%20damaged%20or%20die.). Given certain data, it is inteded to predict whether that data incidates if a stroke is likely to happen or not. The demo was created using [gradio](https://www.gradio.app).
