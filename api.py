@@ -104,7 +104,7 @@ def encode_pred(df, final_cols):
     if all(df["age"] > 19):
         bmi = enc.AdultBMIEncoder(df).encode()
     else:
-        bmi = enc.ChildBMIEncoder(bmi_table= child_bmi_data, data_table= df).encode()
+        bmi = enc.ChildBMIEncoder(bmi_table= child_bmi_df, data_table= df).encode()
     enc.one_hot_enc_bmi(df,"bmi_buckets")
     enc.GenderEncoder(df,"gender").encode()
     enc.AgeEncoder(df,"age").encode()
@@ -113,6 +113,7 @@ def encode_pred(df, final_cols):
     enc.SmokingStatusEncoder(df, "smoking_status").encode()
     enc.HypertensionEncoder(df,"hypertension").encode()
     enc.HeartDiseaseEncoder(df,"heart_disease").encode()
+
     df = df[final_cols]
 
     return df
