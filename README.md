@@ -44,5 +44,5 @@ Finally, a prediction is made of whether the entered data is likely to result in
 [data](data): Contains the health data the model is trained on as well as a BMI table used to calculate BMI percentiles for children and teens under 20. (For children and teens, BMI is age- and sex-specific and is often referred to as BMI-for-age )
 
 
-## Demo
-<video src="data/stroke_pred_demo_clipped.mp4" controls autoplay title="Stroke Predictor Demo"></video>
+<!-- ## Demo
+<video src="data/stroke_pred_demo_clipped.mp4" controls autoplay title="Stroke Predictor Demo"></video> -->
