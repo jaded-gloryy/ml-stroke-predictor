@@ -6,7 +6,7 @@ colorTo: indigo
 sdk: gradio
 sdk_version: 3.39.0
 python_version: 3.10.2
-app_file: demo.ipynb
+app_file: app.py
 pinned: true
 ---
 
