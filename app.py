@@ -70,4 +70,4 @@ with gr.Blocks() as demo:
             submit_btn.click(request_prediction, inputs = [age_in, gend_in, res_in, hyp_in, hdis_in, smoke_in, marr_in, bmi], outputs= pred)
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", server_port=7860)
