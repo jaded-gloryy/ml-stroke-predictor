@@ -64,6 +64,26 @@ Finally, a prediction is made of whether the entered data is likely to result in
 
 ### Using this model
 
+#### To run locally:
+
+Clone this repository.
+````
+$ git clone https://github.com/jaded-gloryy/ml-stroke-predictor.git
+````
+Change the last line in app.py to:
+
+````
+if __name__ == "__main__":
+    demo.launch(server_name=None, server_port=7860)
+````
+Run the following command. A link to the demo will be generated as output.
+```
+$ python app.py
+```
+
+### File summary
+[Dockerfile](Dockerfile): Contains logic for 
+
 [demo.ipynb](demo.ipynb): Contains logic for the interface of this project.
 
 [api.py](api.py): Contains api logic for this demo, including requesting BMI caluclation, requesting a prediction, and supplementary validation functions.
