@@ -70,12 +70,6 @@ Clone this repository.
 ````
 $ git clone https://github.com/jaded-gloryy/ml-stroke-predictor.git
 ````
-Change the last line in app.py to:
-
-````
-if __name__ == "__main__":
-    demo.launch(server_name=None, server_port=7860)
-````
 Run the following command. A link to the demo will be generated as output.
 ```
 $ python app.py

@@ -20,7 +20,7 @@ RUN apt-get install -y ffmpeg
 
 USER user
 # Set home to the user's home directory
-ENV HOME=/home/user PATH=/home/user/.local/bin:$PATH
+ENV HOME=/home/user PATH=/home/user/.local/bin:$PATH GRADIO_SERVER_NAME=0.0.0.0 GRADIO_SERVER_NAME=7860
  
 # Set the working directory to the user's home directory
 WORKDIR $HOME/app
