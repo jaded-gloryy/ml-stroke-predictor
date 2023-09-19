@@ -20,7 +20,7 @@ RUN apt-get install -y ffmpeg
 
 USER user
 # Set home to the user's home directory
-ENV HOME=/home/user PATH=/home/user/.local/bin:$PATH GRADIO_SERVER_NAME=0.0.0.0 GRADIO_SERVER_NAME=7860
+ENV HOME=/home/user PATH=/home/user/.local/bin:$PATH GRADIO_SERVER_NAME=0.0.0.0 GRADIO_SERVER_PORT=7860
  
 # Set the working directory to the user's home directory
 WORKDIR $HOME/app
@@ -30,6 +30,6 @@ COPY --chown=user . $HOME/app
  
 # Start the FastAPI app on port 7860, the default port expected by Spaces
 # CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
-# EXPOSE 7860
+EXPOSE 7860
 
 CMD ["python", "app.py"]
