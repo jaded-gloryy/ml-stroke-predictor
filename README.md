@@ -34,20 +34,6 @@ This is a supervised learning, classification task, using a Support Vector Machi
 
 I used pandas to preprocess the data and scikit learn to train and test the model. “Stroke” examples represents 5% of the full dataset, and the model is accurate ~94% of the time.
 
-## Challenges:
-
-*Abstractions*  
->This was my first time implementing abstractions throughout the programming process. Typically I  get function happy, only to come back later and implement classes. Throughout this project I was able to see and experience the benefits of building abstractions right into the process through the encoder classes I incorporated.
-
-*UI Interface*  
->This was my first time using gradio (or any user facing interface for a ml model) along with balancing error handling from user inputs vs choosing interfaces with the proper constraints built in. Figuring out where to call out or raise an error was also a new challenge due to the different abstractions I implemented. I learned how to build the interface for my model separate and independent of using the model itself.
-
-*Integrations*  
->Integrating my GitHub repo with a HuggingFace "Space" was a bit challenging. I wasn't initially familiar with the process but I was able to find documentation on how to sync my repo with a HuggingFace repo using GitHub actions. Now everytime I push code to my "main" branch it will perform an upload to the "space" on hugging face. After getting those to work seamlessly, and adding the necessary items for integration (yml in the ReadMe and an app.py file), I did some troubleshooting to ensure that proper versions of all my dependencies were installed and there were no conflicts. 
-
-*Future work*  
->Going forward I’d like to test a few different models to compare their performance to this SVM. I’m particualry interested in producing confidence intervals around these predictions. I would also like to look deeper into my error rate, ie. what percent of predictions are false positives (a stroke is predicted when no stroke occurred) and also negatives (no stroke is predicted when a stroke has occurred).
-
 ### How the demo works
 Body mass index (**BMI**) is one of the features of this predictor. A user is first asked to submit a weight and height to calculate BMI.
 
@@ -74,6 +60,20 @@ Run the following command. A link to the demo will be generated as output.
 ```
 $ python app.py
 ```
+
+## Challenges:
+
+*Abstractions*  
+>This was my first time implementing abstractions throughout the programming process. Typically I  get function happy, only to come back later and implement classes. Throughout this project I was able to see and experience the benefits of building abstractions right into the process through the encoder classes I incorporated.
+
+*UI Interface*  
+>This was my first time using gradio (or any user facing interface for a ml model) along with balancing error handling from user inputs vs choosing interfaces with the proper constraints built in. Figuring out where to call out or raise an error was also a new challenge due to the different abstractions I implemented. I learned how to build the interface for my model separate and independent of using the model itself.
+
+*Integrations*  
+>Integrating my GitHub repo with a HuggingFace "Space" was a bit challenging. I wasn't initially familiar with the process but I was able to find documentation on how to sync my repo with a HuggingFace repo using GitHub actions. Now everytime I push code to my "main" branch it will perform an upload to the "space" on hugging face. After getting those to work seamlessly, and adding the necessary items for integration (yml in the ReadMe and an app.py file), I did some troubleshooting to ensure that proper versions of all my dependencies were installed and there were no conflicts. 
+
+*Future work*  
+>Going forward I’d like to test a few different models to compare their performance to this SVM. I’m particualry interested in producing confidence intervals around these predictions. I would also like to look deeper into my error rate, ie. what percent of predictions are false positives (a stroke is predicted when no stroke occurred) and also negatives (no stroke is predicted when a stroke has occurred).
 
 ### File summary
 [Dockerfile](Dockerfile): Contains logic for 
