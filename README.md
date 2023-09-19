@@ -3,8 +3,9 @@ title: ML Stroke Predictor
 emoji: 🧪
 colorFrom: pink
 colorTo: indigo
-sdk: gradio
-sdk_version: 3.39.0
+sdk: docker
+# sdk: gradio
+# sdk_version: 3.39.0
 python_version: 3.10.2
 app_file: app.py
 pinned: true
