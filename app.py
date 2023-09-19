@@ -1,6 +1,7 @@
 import gradio as gr
 from api import request_bmi, request_prediction
 from config import CONFIG
+from os import environ
 
 #demo
 
@@ -70,4 +71,6 @@ with gr.Blocks() as demo:
             submit_btn.click(request_prediction, inputs = [age_in, gend_in, res_in, hyp_in, hdis_in, smoke_in, marr_in, bmi], outputs= pred)
 
 if __name__ == "__main__":
-    demo.launch(server_name=CONFIG["GRADIO_SERVER_NAME"], server_port=int(CONFIG["GRADIO_SERVER_PORT"]))
+    sname = environ["GRADIO_SERVER_NAME"] or CONFIG["GRADIO_SERVER_NAME"] 
+    sport = int(environ["GRADIO_SERVER_PORT"]) or CONFIG["GRADIO_SERVER_PORT"]
+    demo.launch(server_name=sname, server_port=sport)

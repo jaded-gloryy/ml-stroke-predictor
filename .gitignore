@@ -130,6 +130,6 @@ dmypy.json
 .pyre/
 
 test_docs/
-data/
+data/misc-stroke-predictor-demo-videos
 
 .DS_Store
