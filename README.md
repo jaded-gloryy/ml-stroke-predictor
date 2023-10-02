@@ -76,7 +76,7 @@ $ python app.py
 >Going forward I’d like to test a few different models to compare their performance to this SVM. I’m particualry interested in producing confidence intervals around these predictions. I would also like to look deeper into my error rate, ie. what percent of predictions are false positives (a stroke is predicted when no stroke occurred) and also negatives (no stroke is predicted when a stroke has occurred).
 
 ### File summary
-[Dockerfile](Dockerfile): Contains logic for 
+[Dockerfile](Dockerfile): Contains logic to create a Docker Image.
 
 [demo.ipynb](demo.ipynb): Contains logic for the interface of this project.
 
